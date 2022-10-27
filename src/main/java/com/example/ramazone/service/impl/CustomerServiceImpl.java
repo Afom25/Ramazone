@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -20,10 +21,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
     @Override
     public List<Customer> getplantinumhonoredcustomers() {
-        return customerRepository.findAll(Sort.by(Sort.Direction.ASC,"fullNames"));
+        return customerRepository.findAll(Sort.by(Sort.Direction.DESC,"numberOfRewardPointsEarned"));
+    }
+
+
+    public List<Customer> getAccountBalance(String prime)
+    {
+        return customerRepository.getAccountBalance(prime);
     }
 
 
 
-}
+
+    }
+
+
+
 
